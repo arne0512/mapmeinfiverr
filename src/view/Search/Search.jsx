@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { teal } from "@material-ui/core/colors";
-import ButtonCommon from "../../common/ButtonCommon";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,18 +11,25 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     marginTop: "10%",
-    alignItems: "center",
-    "& button": {
-      color: theme.palette.getContrastText(teal[500]),
-      backgroundColor: teal[300],
-      "&:hover": {
-        backgroundColor: teal[700],
-      },
-    },
+    alignItems: "center"
   },
   formControl: {
     margin: theme.spacing(4),
     minWidth: 300,
+  },
+  button: {
+    margin: theme.spacing(1),
+    borderRadius: "30px",
+    backgroundColor: "#00732e",
+    color: "white",
+    border: "none",
+    width: "200px",
+    height: "45px",
+    marginTop: "30px",
+    textTransform: "uppercase",
+    "&:hover": {
+      backgroundColor: "#003912",
+    },
   },
 }));
 
@@ -127,10 +132,10 @@ export default function Search() {
         </Select>
       </FormControl>
       <br />
+      
       <Link to="/map">
-      <ButtonCommon action="Valider" />
+      <button className={classes.button}>Contacter</button>
       </Link>
-    
     </div>
   );
 }

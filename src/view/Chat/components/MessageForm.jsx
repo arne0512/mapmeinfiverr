@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { SendOutlined, PictureOutlined } from "@ant-design/icons";
+import SendIcon from '@material-ui/icons/Send';
 import { sendMessage, isTyping } from "react-chat-engine";
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 
 const MessageForm = (props) => {
   const [value, setValue] = useState("");
@@ -39,7 +40,7 @@ const MessageForm = (props) => {
       />
       <label htmlFor="upload-button">
         <span className="image-button">
-          <PictureOutlined className="picture-icon" />
+          <AttachFileIcon className="picture-icon" />
         </span>
       </label>
       <input
@@ -50,7 +51,7 @@ const MessageForm = (props) => {
         onChange={handleUpload.bind(this)}
       />
       <button type="submit" className="send-button">
-        <SendOutlined className="send-icon" />
+        <SendIcon className="send-icon" />
       </button>
     </form>
   );
