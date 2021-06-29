@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import StarsIcon from '@material-ui/icons/Stars';
 import { Link } from "react-router-dom";
 
 
@@ -48,9 +49,9 @@ export default function Profile() {
 
   return (
     <Card className={classes.root}>
-      <Avatar className={classes.avatar} alt="avatar" src="/avatargreen.jpg" />
+      <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
 
-      <CardHeader title="Janice JAY" subheader="Designer UI" />
+      <CardHeader title="Val JAY" subheader="Designer UI" />
 
       <CardContent variant="body2">
         <Typography>
@@ -60,6 +61,10 @@ export default function Profile() {
         <Typography>
           <BookmarkIcon style={{ color: green[500] }} />
           Jul 2020
+        </Typography>
+        <Typography>
+          <StarsIcon style={{ color: green[500] }} />
+          +300 works done
         </Typography>
         <Typography>
           <CheckCircleIcon style={{ color: green[500] }}  />

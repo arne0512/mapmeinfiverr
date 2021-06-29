@@ -49,9 +49,9 @@ export default function Thumbnail() {
   return (
 
         <Card className={classes.root}>
-          <Avatar className={classes.avatar} alt="avatar" src="/avatargreen.jpg" />
+          <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
 
-          <CardHeader title="Janice JAY" subheader="Designer UI" />
+          <CardHeader title="Val JAY" subheader="Designer UI" />
 
           <CardContent variant="body2">
             <Typography>
