@@ -9,6 +9,7 @@ import {
   Marker,
 } from 'react-simple-maps';
 import Thumbnail from './components/Thumbnail';
+import Popover from "@material-ui/core/Popover";
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -44,6 +45,18 @@ function Map() {
     console.log(markers);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
   return (
     <div>
       <div>
@@ -61,7 +74,7 @@ function Map() {
               }
             </Geographies>
             {markers.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates} >
+        <Marker key={name} coordinates={coordinates} onClick={handleClick} >
           <g
             fill="none"
             stroke="#FF5533"
@@ -73,13 +86,29 @@ function Map() {
             <circle cx="12" cy="10" r="3" />
             <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
           </g>
-          
+ 
         </Marker>
-      ))}
+         
+      ))}<Popover
+      id={id}
+      open={open}
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "center",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "center",
+      }}
+    ><Thumbnail/>
+      </Popover>
       
           </ZoomableGroup>
         </ComposableMap>
         <button onClick={handleValidateSearch}>Valider</button>
+       
       </div>
       <Thumbnail />
     </div>

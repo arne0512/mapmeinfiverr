@@ -1,12 +1,13 @@
 import React from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Typography, CardHeader } from "@material-ui/core";
 import { green } from '@material-ui/core/colors';
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import DoneIcon from "@material-ui/icons/Done";
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { Link } from "react-router-dom";
 
 
@@ -57,11 +58,15 @@ export default function Profile() {
           Texas, USA
         </Typography>
         <Typography>
-          <DoneIcon style={{ color: green[500] }}  />
+          <BookmarkIcon style={{ color: green[500] }} />
+          Jul 2020
+        </Typography>
+        <Typography>
+          <CheckCircleIcon style={{ color: green[500] }}  />
           Last minute work
         </Typography>
         <Typography>
-          <DoneIcon style={{ color: green[500] }}  />
+          <CheckCircleIcon style={{ color: green[500] }}  />
           Like to collaborate
         </Typography>
       </CardContent>

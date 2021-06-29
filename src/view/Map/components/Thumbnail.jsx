@@ -6,9 +6,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import Popover from "@material-ui/core/Popover";
 import {Link} from "react-router-dom";
-import { Marker } from 'react-simple-maps';
+
 
 const useStyles = makeStyles((theme) => ({
   //centrer card material ui
@@ -45,36 +44,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Thumbnail() {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
-    <>
- 
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
+
         <Card className={classes.root}>
           <Avatar className={classes.avatar} alt="avatar" src="/avatar.jpg" />
 
@@ -90,7 +63,6 @@ export default function Thumbnail() {
             <button className={classes.button}>Contacter</button>
           </Link>
         </Card>
-      </Popover>
-    </>
+
   );
 }
