@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Typography, CardHeader } from "@material-ui/core";
 import { green } from '@material-ui/core/colors';
 import Avatar from "@material-ui/core/Avatar";
@@ -7,6 +7,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import DoneIcon from "@material-ui/icons/Done";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
     //centrer card material ui
@@ -63,8 +65,9 @@ export default function Profile() {
           Like to collaborate
         </Typography>
       </CardContent>
-
+      <Link to="/chat">
       <button className={classes.button}>Contacter</button>
+      </Link>
     </Card>
   );
 }
