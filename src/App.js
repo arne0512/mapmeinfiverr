@@ -11,7 +11,6 @@ function App() {
         <Route path="/" exact render={() => <Search />} />
         <Route path="/map" exact render={() => <Map />} />
         <Route path="/profile" exact render={() => <Profile />} />
-
         </Switch>
       </div>
 
