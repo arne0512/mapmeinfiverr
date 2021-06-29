@@ -48,7 +48,7 @@ export default function Profile() {
 
   return (
     <Card className={classes.root}>
-      <Avatar className={classes.avatar} alt="avatar" src="/avatar.jpg" />
+      <Avatar className={classes.avatar} alt="avatar" src="/avatargreen.jpg" />
 
       <CardHeader title="Janice JAY" subheader="Designer UI" />
 

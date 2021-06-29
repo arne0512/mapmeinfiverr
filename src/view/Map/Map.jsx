@@ -21,6 +21,20 @@ const useStyles = createUseStyles({
     strokeWidth: '0.5px',
     fill: '#d0f7e6',
   },
+  button: {
+    marginLeft: '40%',
+    borderRadius: "30px",
+    backgroundColor: "#1dbf73",
+    color: "white",
+    border: "none",
+    width: "200px",
+    height: "45px",
+    marginTop: "30px",
+    textTransform: "uppercase",
+    "&:hover": {
+      backgroundColor: "#003912",
+    },
+  }
 });
 
 function Map() {
@@ -107,10 +121,11 @@ function Map() {
       
           </ZoomableGroup>
         </ComposableMap>
-        <button onClick={handleValidateSearch}>Valider</button>
+        <button className={classes.button}
+        onClick={handleValidateSearch}>Valider</button>
        
       </div>
-      <Thumbnail />
+  
     </div>
   );
 }
