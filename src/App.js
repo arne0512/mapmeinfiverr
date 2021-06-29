@@ -15,9 +15,7 @@ function App() {
         <Route path="/profile" exact render={() => <Profile />} />
         </Switch>
       </div>
-
     </Router>
-
   );
 }
 

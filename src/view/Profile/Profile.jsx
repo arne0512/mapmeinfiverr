@@ -4,7 +4,6 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import DoneIcon from '@material-ui/icons/Done';
-import ButtonCommon from "../../common/ButtonCommon";
 
 //coin du style
 const StyledBadge = withStyles((theme) => ({
@@ -26,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 //bouchon
 
-const profile = [
-    {nom: 'Janne', }
-];
+// const profile = [
+//     {nom: 'Janne', }
+// ];
 export default function Profile() {
   const classes = useStyles();
 
@@ -52,7 +51,7 @@ export default function Profile() {
       <Typography variant="h7">Texas, USA</Typography><br/>
       <Typography variant="h7"><DoneIcon/>Last minute work</Typography><br/>
       <Typography variant="h7"><DoneIcon/>Like to collaborate</Typography>
-        <ButtonCommon action="contacter" />
+        <button>contacter</button>
 
       
     </div>

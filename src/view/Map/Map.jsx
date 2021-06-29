@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   ComposableMap,
@@ -8,6 +8,9 @@ import {
   Geography,
   Marker,
 } from 'react-simple-maps';
+import { useContext } from 'react';
+
+import FreelancersContext from '../../contexts/FreelancersContext';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -21,32 +24,83 @@ const useStyles = createUseStyles({
   },
 });
 
+const freelancers = [
+  {
+    id: 1,
+    firstname: "Dimitri",
+    lastname: "Karkov",
+    speciality: "translator",
+    localisation: "Saint-Petersbourg",
+    coordinates: [30.335099, 59.934280],
+    timezone: "Moscow",
+    availability: true,
+    deadline:"12",
+    workform:"collab"
+  },
+  {
+    id: 2,
+    firstname: "Joe",
+    lastname: "Vegas",
+    speciality: "designer",
+    localisation: "Los Angeles",
+    coordinates: [34.003342, -118.485832],
+    timezone: "Los Angeles",
+    availability: true,
+    deadline:"24",
+    workform:"collab"
+  },
+  {
+    id: 3,
+    firstname: "Nha",
+    lastname: "Vo",
+    speciality: "developer",
+    localisation: "Natrang",
+    coordinates: [12.24507, 109.19432],
+    timezone: "Ho Chi Minh",
+    availability: true,
+    deadline:"12",
+    workform:"collab"
+  },
+  {
+    id: 4,
+    firstname: "Nha",
+    lastname: "Vo",
+    speciality: "translator",
+    localisation: "Natrang",
+    coordinates: [109.19432, 12.24507],
+    timezone: "Ho Chi Minh",
+    availability: true,
+    deadline:"12",
+    workform:"collab"
+  }
+]
+
 function Map() {
   const classes = useStyles();
 
-  const [markers, setMarkers] = useState([
-    { name: 'Bogota', coordinates: [-74.0721, 4.711] },
-    { name: 'Quito', coordinates: [-78.4678, -0.1807] },
-    { name: 'Asuncion', coordinates: [-57.5759, -25.2637] },
-    { name: 'Paramaribo', coordinates: [-55.2038, 5.852] },
-    { name: 'Montevideo', coordinates: [-56.1645, -34.9011] },
-    { name: 'Caracas', coordinates: [-66.9036, 10.4806] },
-    { name: 'Lima', coordinates: [-77.0428, -12.0464] },
-  ]);
+  //  const [markers, setMarkers] = useState([
+  //   { name: 'La Paz', coordinates: [-68.1193, -16.4897] },
+  //   { name: 'Brasilia', coordinates: [-47.8825, -15.7942] },
+  //   { name: 'Santiago', coordinates: [-70.6693, -33.4489] },
+  //  ]);
+   
+  //  const extractCoordonates = () => {
+  //   freelancers.map((marker) => {
+  //     markers.push(marker.coordinates);
+      
+  //   });
+  //   console.log(markers);
+  // }
 
-  const handleValidateSearch = () => {
-    setMarkers([
-      { name: 'La Paz', coordinates: [-68.1193, -16.4897] },
-      { name: 'Brasilia', coordinates: [-47.8825, -15.7942] },
-      { name: 'Santiago', coordinates: [-70.6693, -33.4489] },
-    ]);
-    console.log(markers);
-  };
+  // const handleValidateSearch = () => {
+  //   setMarkers([]);
+  //   console.log(markers);
+  // };
 
   return (
     <div>
       <div>
-        <ComposableMap width="1200">
+        <ComposableMap>
           <ZoomableGroup>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
@@ -59,7 +113,9 @@ function Map() {
                 ))
               }
             </Geographies>
-            {markers.map(({ name, coordinates, markerOffset }) => (
+            {freelancers
+            .filter((freelance) => freelance.speciality === "translator" && freelance.timezone === 'Moscow')
+            .map(({name, coordinates }) => (
         <Marker key={name} coordinates={coordinates}>
           <g
             fill="none"
@@ -78,7 +134,7 @@ function Map() {
       
           </ZoomableGroup>
         </ComposableMap>
-        <button onClick={handleValidateSearch}>Valider</button>
+        {/* <button onClick={handleValidateSearch}>Valider</button> */}
       </div>
     </div>
   );
