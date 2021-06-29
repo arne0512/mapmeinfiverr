@@ -8,6 +8,7 @@ import {
   Geography,
   Marker,
 } from 'react-simple-maps';
+import Thumbnail from './components/Thumbnail';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -60,7 +61,7 @@ function Map() {
               }
             </Geographies>
             {markers.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates}>
+        <Marker key={name} coordinates={coordinates} >
           <g
             fill="none"
             stroke="#FF5533"
@@ -80,6 +81,7 @@ function Map() {
         </ComposableMap>
         <button onClick={handleValidateSearch}>Valider</button>
       </div>
+      <Thumbnail />
     </div>
   );
 }
