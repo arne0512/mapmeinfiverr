@@ -1,10 +1,18 @@
 import React from 'react';
+import Form from './components/Form';
+// import { makeStyles } from "@material-ui/core";
 
+// const useStyles = makeStyles((theme)=>({
+//     background:{
+//         }
+// }))
 function Search(props) {
+    // const classes = useStyles();
     return (
-        <div>
-            <p>This is the search page</p>
+        <div >
             
+           <Form />
+          
         </div>
     );
 }
