@@ -1,13 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles}  from "@material-ui/core/styles";
 import { Typography, CardHeader } from "@material-ui/core";
 import { green } from '@material-ui/core/colors';
 import Avatar from "@material-ui/core/Avatar";
-<<<<<<< HEAD
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
-import DoneIcon from '@material-ui/icons/Done';
-=======
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -15,8 +10,6 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import StarsIcon from '@material-ui/icons/Stars';
 import { Link } from "react-router-dom";
->>>>>>> origin/dev
-
 
 const useStyles = makeStyles((theme) => ({
     //centrer card material ui
@@ -50,43 +43,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-<<<<<<< HEAD
-// const profile = [
-//     {nom: 'Janne', }
-// ];
-=======
->>>>>>> origin/dev
 export default function Profile() {
   const classes = useStyles();
 
   return (
-<<<<<<< HEAD
-    <div>
-      {/* avatar */}
-      <StyledBadge
-        overlap="circle"
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        variant="dot"
-      >
-        <Avatar className={classes.root} alt="avatar" src="/avatar.jpg" />
-      </StyledBadge>
-      
-      {/* infos */}
-      <Typography variant="h4">Jane Doe</Typography>
-      <Typography variant="h6">Designer UI</Typography>
-      <Typography variant="h7">Texas, USA</Typography><br/>
-      <Typography variant="h7"><DoneIcon/>Last minute work</Typography><br/>
-      <Typography variant="h7"><DoneIcon/>Like to collaborate</Typography>
-        <button>contacter</button>
-=======
     <Card className={classes.root}>
       <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
-
+      
       <CardHeader title="Val JAY" subheader="Designer UI" />
->>>>>>> origin/dev
 
       <CardContent variant="body2">
         <Typography>
