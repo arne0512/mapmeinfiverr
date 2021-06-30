@@ -6,7 +6,6 @@ import Header from '../src/layout/Header';
 import ChatFeed from '../src/view/Chat/components/ChatFeed';
 import LoginForm from '../src/view/Chat/components/LoginForm';
 import {ChatEngine} from "react-chat-engine";
-import "./App.css";
 import "./AppChat.css"
 
 
