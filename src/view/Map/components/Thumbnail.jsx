@@ -51,16 +51,16 @@ export default function Thumbnail() {
         <Card className={classes.root}>
           <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
 
-          <CardHeader title="Val JAY" subheader="Designer UI" />
+          <CardHeader title="Erik Svensson" subheader="Web Developer" />
 
           <CardContent variant="body2">
             <Typography>
               <SupervisorAccountIcon style={{ color: green[500] }} />
-              Disponible
+              Available
             </Typography>
           </CardContent>
           <Link to="/profile">
-            <button className={classes.button}>Contacter</button>
+            <button className={classes.button}>See Profile</button>
           </Link>
         </Card>
 

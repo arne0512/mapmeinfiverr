@@ -1,17 +1,27 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { teal } from '@material-ui/core/colors';
+import Map from '../Map/Map';
 
 const useStyles = makeStyles((theme) => ({
   all: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginTop: "10%",
-    alignItems: "center"
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '5%',
+    alignItems: 'center',
+
+    '& button': {
+      color: theme.palette.getContrastText(teal[500]),
+      backgroundColor: teal[300],
+
+      '&:hover': {
+        backgroundColor: teal[700],
+      },
+    },
   },
   formControl: {
     margin: theme.spacing(4),
@@ -33,109 +43,82 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search() {
+const Search = () => {
   const classes = useStyles();
-  //search for freelance
-  const [freelancer, setFreelancer] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-  const handleChange = (event) => {
-    setFreelancer(event.target.value);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
+
+  //search for freelance speciality
+  const [speciality, setSpeciality] = useState('');
+
+  const handleChangeSpeciality = (e) => {
+    setSpeciality(e.target.value);
+    // console.log(speciality);
   };
 
-  //set timing
-  const [timing, setTiming] = React.useState("");
-  const [openTime, setOpenTime] = React.useState(false);
-  const handleChangeTime = (event) => {
-    setTiming(event.target.value);
-  };
-  const handleCloseTime = () => {
-    setOpenTime(false);
-  };
-  const handleOpenTime = () => {
-    setOpenTime(true);
+  //search for a timezone
+  const [timezone, setTimezone] = useState('');
+
+  const handleChangeTimezone = (e) => {
+    setTimezone(e.target.value);
   };
 
-  //localisation
-  const [loc, setLoc] = React.useState("");
-  const [openLoc, setOpenLoc] = React.useState(false);
-  const handleChangeLoc = (event) => {
-    setLoc(event.target.value);
+  //search for mission
+  const [workform, setWorkform] = useState('');
+
+  const handleChangeWorkform = (e) => {
+    setWorkform(e.target.value);
+  }
+
+  const handleValidateSearch = (e) => {
+    console.log(speciality, timezone);
+    setAllShowFreelancers(!showAllFreelancers)
   };
-  const handleCloseLoc = () => {
-    setOpenLoc(false);
-  };
-  const handleOpenLoc = () => {
-    setOpenLoc(true);
-  };
+
+  const [showAllFreelancers, setAllShowFreelancers] = useState(false);
+  
   return (
-    <div className={classes.all}>
-      <FormControl className={classes.formControl} variant="outlined">
-      What are you searching for?
-        <Select
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={freelancer}
-          onChange={handleChange}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Developer</MenuItem>
-          <MenuItem value={20}>Designer</MenuItem>
-          <MenuItem value={30}>Translator</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
+    <>
+      <div className={classes.all}>
 
-      <FormControl className={classes.formControl} variant="outlined">
-       When do you need it to be done?
-        <Select
-          open={openTime}
-          onClose={handleCloseTime}
-          onOpen={handleOpenTime}
-          value={timing}
-          onChange={handleChangeTime}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>in 6 hours!</MenuItem>
-          <MenuItem value={20}>in 12 hours</MenuItem>
-          <MenuItem value={30}>in 24 hours</MenuItem>
-        </Select>
-      </FormControl>
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What are you searching for?</p>
+          <Select value={speciality} onChange={handleChangeSpeciality}>
+            <MenuItem value={'developer'}>Web Dev</MenuItem>
+            <MenuItem value={'designer'}>Design</MenuItem>
+            <MenuItem value={'translator'}>Translation</MenuItem>
+            <MenuItem value={'cybersecurity'}>Cyber Security</MenuItem>
+            <MenuItem value={'data'}>Data</MenuItem>
+          </Select>
+        </FormControl>
 
-      <br />
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What is your time zone?</p>
+          <Select value={timezone} onChange={handleChangeTimezone}>
+            <MenuItem value={'Europe'}>Europe</MenuItem>
+            <MenuItem value={'America'}>America</MenuItem>
+            <MenuItem value={'Asia'}>Asia</MenuItem>
+            <MenuItem value={'Africa'}>Africa</MenuItem>
+            <MenuItem value={'Oceania'}>Oceania</MenuItem>
+          </Select>
+        </FormControl>
 
-      <FormControl className={classes.formControl} variant="outlined">
-        Where is your location?
-        <Select
-          open={openLoc}
-          onClose={handleCloseLoc}
-          onOpen={handleOpenLoc}
-          value={loc}
-          onChange={handleChangeLoc}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>France</MenuItem>
-          <MenuItem value={20}>Budapest</MenuItem>
-          <MenuItem value={30}>Iceland</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What kind of mission?</p>
+          <Select value={workform} onChange={handleChangeWorkform}>
+            <MenuItem value={'collaboration'}>Collaboration</MenuItem>
+            <MenuItem value={'subcontracting'}>Subcontracting</MenuItem>
       
-      <Link to="/map">
-      <button className={classes.button}>Contacter</button>
-      </Link>
-    </div>
+          </Select>
+        </FormControl>
+
+        <button className={classes.button} onClick={handleValidateSearch}>
+          Valider
+        </button>
+      </div>
+      <div>
+        <Map speciality={speciality} timezone={timezone}  workform={workform} showAllFreelancers={showAllFreelancers}/>
+      </div>
+    </>
   );
-}
+};
+
+export default Search;

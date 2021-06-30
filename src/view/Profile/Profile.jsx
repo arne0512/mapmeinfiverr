@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles}  from "@material-ui/core/styles";
 import { Typography, CardHeader } from "@material-ui/core";
 import { green } from '@material-ui/core/colors';
 import Avatar from "@material-ui/core/Avatar";
@@ -10,7 +10,6 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import StarsIcon from '@material-ui/icons/Stars';
 import { Link } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
     //centrer card material ui
@@ -51,12 +50,12 @@ export default function Profile() {
     <Card className={classes.root}>
       <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
 
-      <CardHeader title="Val JAY" subheader="Designer UI" />
+      <CardHeader title="Erik Svensson" subheader="Web Developper" />
 
       <CardContent variant="body2">
         <Typography>
           <LocationOnIcon style={{ color: green[500] }} />
-          Texas, USA
+          Stockholm, Sweden
         </Typography>
         <Typography>
           <BookmarkIcon style={{ color: green[500] }} />
