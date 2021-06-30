@@ -522,7 +522,7 @@ function Map({ speciality, timezone, workform, showAllFreelancers }) {
                     freelance.workform === workform)
               )
               .map(({ id, coordinates }) => (
-                <Marker key={freelancers.id} coordinates={coordinates} onClick={handleShowThumbnail}>
+                <Marker key={freelancers.id} coordinates={coordinates} onMouseOver={handleShowThumbnail}>
 
                   <g
                     fill="none"

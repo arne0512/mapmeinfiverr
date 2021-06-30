@@ -49,13 +49,13 @@ export default function Profile() {
   return (
     <Card className={classes.root}>
       <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
-      
-      <CardHeader title="Val JAY" subheader="Designer UI" />
+
+      <CardHeader title="Erik Svensson" subheader="Web Developper" />
 
       <CardContent variant="body2">
         <Typography>
           <LocationOnIcon style={{ color: green[500] }} />
-          Texas, USA
+          Stockholm, Sweden
         </Typography>
         <Typography>
           <BookmarkIcon style={{ color: green[500] }} />
