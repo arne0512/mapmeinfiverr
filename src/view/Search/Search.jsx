@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { teal } from '@material-ui/core/colors';
-import { useState } from 'react';
-import FreelancersContext from '../../contexts/FreelancersContext';
-
+import Map from '../Map/Map';
 
 const useStyles = makeStyles((theme) => ({
   all: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginTop: '10%',
+    marginTop: '5%',
     alignItems: 'center',
+
     '& button': {
       color: theme.palette.getContrastText(teal[500]),
       backgroundColor: teal[300],
+
       '&:hover': {
         backgroundColor: teal[700],
       },
@@ -44,74 +44,83 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- const Search = () => {
+const Search = () => {
   const classes = useStyles();
 
-  //search for freelance
+
+  //search for freelance speciality
   const [speciality, setSpeciality] = useState('');
-  
-  const handleChangeSpeciality = (event) => {
-    setSpeciality(event.target.value);
+
+  const handleChangeSpeciality = (e) => {
+    setSpeciality(e.target.value);
     // console.log(speciality);
   };
 
-  //timing
-  const [timing, setTiming] = useState('');
-  const handleChangeTiming = (event) => {
-    setTiming(event.target.value);
-    // console.log(timing);
-  };
-
-  //timezone
+  //search for a timezone
   const [timezone, setTimezone] = useState('');
 
-  const handleChangeTimezone = (event) => {
-    setTimezone(event.target.value);
+  const handleChangeTimezone = (e) => {
+    setTimezone(e.target.value);
   };
+
+  //search for mission
+  const [workform, setWorkform] = useState('');
+
+  const handleChangeWorkform = (e) => {
+    setWorkform(e.target.value);
+  }
 
   const handleValidateSearch = (e) => {
-    console.log(speciality, timing, timezone);
+    console.log(speciality, timezone);
+    setAllShowFreelancers(!showAllFreelancers)
   };
 
+  const [showAllFreelancers, setAllShowFreelancers] = useState(false);
+  
   return (
-    <FreelancersContext.Provider value={{speciality: speciality}}>
+    <>
+      <div className={classes.all}>
 
-    <div className={classes.all}>
-      <FormControl className={classes.formControl} variant="outlined">
-        <p>What are you searching for?</p>
-        <Select value={speciality} onChange={handleChangeSpeciality}>
-          <MenuItem value={'developper'}>Developer</MenuItem>
-          <MenuItem value={'designer'}>Designer</MenuItem>
-          <MenuItem value={'translator'}>Translator</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
-      <FormControl className={classes.formControl} variant="outlined">
-        <p>When do you need it to be done?</p>
-        <Select value={timing} onChange={handleChangeTiming}>
-          <MenuItem value={6}>in 6 hours!</MenuItem>
-          <MenuItem value={12}>in 12 hours</MenuItem>
-          <MenuItem value={18}>in 18 hours</MenuItem>
-          <MenuItem value={24}>in 24 hours</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
-      <FormControl className={classes.formControl} variant="outlined">
-        <p>What is your time zone?</p>
-        <Select value={timezone} onChange={handleChangeTimezone}>
-          <MenuItem value={'paris'}>Paris</MenuItem>
-          <MenuItem value={'moscow'}>Moscou</MenuItem>
-          <MenuItem value={'pekin'}>Pékin</MenuItem>
-        </Select>
-      </FormControl>
-      <br />
-      <button className={classes.button} onClick={handleValidateSearch}>
-        Valider
-      </button>
-    </div> 
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What are you searching for?</p>
+          <Select value={speciality} onChange={handleChangeSpeciality}>
+            <MenuItem value={'developer'}>Web Dev</MenuItem>
+            <MenuItem value={'designer'}>Design</MenuItem>
+            <MenuItem value={'translator'}>Translation</MenuItem>
+            <MenuItem value={'cybersecurity'}>Cyber Security</MenuItem>
+            <MenuItem value={'data'}>Data</MenuItem>
+          </Select>
+        </FormControl>
 
-    </FreelancersContext.Provider>
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What is your time zone?</p>
+          <Select value={timezone} onChange={handleChangeTimezone}>
+            <MenuItem value={'Europe'}>Europe</MenuItem>
+            <MenuItem value={'America'}>America</MenuItem>
+            <MenuItem value={'Asia'}>Asia</MenuItem>
+            <MenuItem value={'Africa'}>Africa</MenuItem>
+            <MenuItem value={'Oceania'}>Oceania</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl className={classes.formControl} variant="outlined">
+          <p>What kind of mission?</p>
+          <Select value={workform} onChange={handleChangeWorkform}>
+            <MenuItem value={'collaboration'}>Collaboration</MenuItem>
+            <MenuItem value={'subcontracting'}>Subcontracting</MenuItem>
+      
+          </Select>
+        </FormControl>
+
+        <button className={classes.button} onClick={handleValidateSearch}>
+          Valider
+        </button>
+      </div>
+      <div>
+        <Map speciality={speciality} timezone={timezone}  workform={workform} showAllFreelancers={showAllFreelancers}/>
+      </div>
+    </>
   );
-}
+};
 
 export default Search;
