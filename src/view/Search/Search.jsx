@@ -27,26 +27,24 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(4),
     minWidth: 300,
   },
-
   button: {
     margin: theme.spacing(1),
-    borderRadius: '30px',
-    backgroundColor: '#B6C867',
-    color: 'white',
-    border: 'none',
-    width: '200px',
-    height: '45px',
-    marginTop: '30px',
-    textTransform: 'uppercase',
-    '&:hover': {
-      backgroundColor: '#01937C',
+    borderRadius: "30px",
+    backgroundColor: "#00732e",
+    color: "white",
+    border: "none",
+    width: "200px",
+    height: "45px",
+    marginTop: "30px",
+    textTransform: "uppercase",
+    "&:hover": {
+      backgroundColor: "#003912",
     },
   },
 }));
 
 const Search = () => {
   const classes = useStyles();
-
 
   //search for freelance speciality
   const [speciality, setSpeciality] = useState('');
