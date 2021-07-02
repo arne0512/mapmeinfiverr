@@ -111,7 +111,7 @@ const Search = () => {
         </FormControl>
 
         <button className={classes.button} onClick={handleValidateSearch}>
-          Valider
+          Validate
         </button>
       </div>
       <div>

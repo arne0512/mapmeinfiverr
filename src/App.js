@@ -11,7 +11,7 @@ import './AppChat.css';
 const projectID = 'fec93f9a-927f-46c9-9481-0921295966b2';
 
 function App() {
-  // if (!localStorage.getItem('username')) return <LoginForm />;
+  if (!localStorage.getItem('username')) return <LoginForm />;
   return (
     // <div>
     //   <Search />

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile() {
+export default function Profile({freelance}) {
   const classes = useStyles();
 
   return (
@@ -75,7 +75,7 @@ export default function Profile() {
         </Typography>
       </CardContent>
       <Link to="/chat">
-      <button className={classes.button}>Contacter</button>
+      <button className={classes.button}>Contact</button>
       </Link>
     </Card>
   );

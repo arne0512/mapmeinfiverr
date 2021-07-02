@@ -3,8 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     logo: {
-        width: '100px',
-        height: '100px'
+        width: '150px',
+        height: '150px',
+        marginLeft: '46%',
+        marginTop:'50px'
     }
 }))
 function Header(props) {
