@@ -41,17 +41,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Thumbnail() {
+export default function Thumbnail({selectedFreelance}) {
   const classes = useStyles();
-
-
 
   return (
 
         <Card className={classes.root}>
-          <Avatar className={classes.avatar} alt="avatar" src="/avataryellow.jpg" />
+          <Avatar className={classes.avatar} alt="avatar" src={selectedFreelance?.image} />
 
-          <CardHeader title="Erik Svensson" subheader="Web Developer" />
+          <CardHeader title={selectedFreelance?.firstname} subheader={`${selectedFreelance?.speciality}, ${selectedFreelance.localisation}`}  />
 
           <CardContent variant="body2">
             <Typography>

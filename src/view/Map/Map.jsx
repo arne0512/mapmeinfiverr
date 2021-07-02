@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import {
   ComposableMap,
@@ -20,6 +20,14 @@ const useStyles = createUseStyles({
     strokeWidth: '0.5px',
     fill: '#d0f7e6',
   },
+
+  community: {
+    textAlign:'center',
+    marginTop:'100px',
+    marginBottom:'-150px'
+
+  },
+
   button: {
     marginLeft: '40%',
     borderRadius: '30px',
@@ -248,8 +256,9 @@ const freelancers = [
   },
   {
     id: 20,
-    firstname: 'Julia',
+    firstname: 'Julia Menini',
     lastname: 'Menini',
+    image: '/avatargreen.jpg',
     speciality: 'developer',
     localisation: 'Rome',
     coordinates: [12.4829321, 41.8933203],
@@ -358,9 +367,10 @@ const freelancers = [
   },
   {
     id: 30,
-    firstname: 'Dave',
+    firstname: 'Cathy James',
     lastname: 'James',
-    speciality: 'translator',
+    image:'/avatar.jpg',
+    speciality: 'developer',
     localisation: 'Londres',
     coordinates: [-0.1276474, 51.5073219],
     timezone: 'Europe',
@@ -369,20 +379,21 @@ const freelancers = [
   },
   {
     id: 31,
-    firstname: 'Erik',
+    firstname: 'Erik Svensson',
     lastname: 'Svensson',
-    speciality: 'designer',
+    image: '/avataryellow.jpg',
+    speciality: 'developer',
     localisation: 'Stockholm',
     coordinates: [18.0710935, 59.3251172],
     timezone: 'Europe',
     deadline: 24,
-    workform: 'subcontracting',
+    workform: 'collaboration',
   },
   {
     id: 32,
     firstname: 'Torje',
     lastname: 'Mund',
-    speciality: 'developer',
+    speciality: 'designer',
     localisation: 'Oslo',
     coordinates: [10.7389701, 59.9133301],
     timezone: 'Europe',
@@ -486,8 +497,9 @@ function Map({ speciality, timezone, workform, showAllFreelancers }) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleShowThumbnail = (event) => {
+  const handleShowThumbnail = (event, freelance) => {
     setAnchorEl(event.currentTarget);
+    setSelectedFreelance(freelance);
   };
 
   const handleClose = () => {
@@ -496,12 +508,14 @@ function Map({ speciality, timezone, workform, showAllFreelancers }) {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+
+  const [selectedFreelance, setSelectedFreelance] = useState();
   
   return (
     <div>
+      <h2 className={classes.community}>Fiverr Freelancers Community</h2>
       <div>
         <ComposableMap>
-          <ZoomableGroup>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => (
@@ -521,8 +535,8 @@ function Map({ speciality, timezone, workform, showAllFreelancers }) {
                     freelance.timezone === timezone &&
                     freelance.workform === workform)
               )
-              .map(({ id, coordinates }) => (
-                <Marker key={freelancers.id} coordinates={coordinates} onMouseOver={handleShowThumbnail}>
+              .map((freelance) => (
+                <Marker key={freelance.id} coordinates={freelance.coordinates} onMouseOver={(event) => handleShowThumbnail(event, freelance)}>
 
                   <g
                     fill="none"
@@ -551,9 +565,8 @@ function Map({ speciality, timezone, workform, showAllFreelancers }) {
                 horizontal: 'center',
               }}
             >
-              <Thumbnail />
+              <Thumbnail selectedFreelance={selectedFreelance}/>
             </Popover>
-          </ZoomableGroup>
         </ComposableMap>
       </div>
     </div>
