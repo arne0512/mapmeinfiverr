@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Search from './view/Search/Search';
-import Profile from './view/Profile/Profile';
-import Header from '../src/layout/Header';
-import ChatFeed from '../src/view/Chat/components/ChatFeed';
-import LoginForm from '../src/view/Chat/components/LoginForm';
-import { ChatEngine } from 'react-chat-engine';
-import './App.css';
-import './AppChat.css';
+import Search from "./view/Search/Search";
+import Profile from "./view/Profile/Profile";
+import Header from "../src/layout/Header";
+import ChatFeed from "../src/view/Chat/components/ChatFeed";
+import LoginForm from "../src/view/Chat/components/LoginForm";
+import { ChatEngine } from "react-chat-engine";
+import "./App.css";
+import "./AppChat.css";
 
-const projectID = 'fec93f9a-927f-46c9-9481-0921295966b2';
+const projectID = "fec93f9a-927f-46c9-9481-0921295966b2";
 
 function App() {
-  if (!localStorage.getItem('username')) return <LoginForm />;
+  // if (!localStorage.getItem('username')) return <LoginForm />;
   return (
     // <div>
     //   <Search />
@@ -29,14 +29,14 @@ function App() {
               <ChatEngine
                 height="100vh"
                 projectID={projectID}
-                userName={localStorage.getItem('username')}
-                userSecret={localStorage.getItem('password')}
+                userName={localStorage.getItem("username")}
+                userSecret={localStorage.getItem("password")}
                 renderChatFeed={(chatAppProps) => (
                   <ChatFeed {...chatAppProps} />
                 )}
                 onNewMessage={() =>
                   new Audio(
-                    'https://chat-engine-assets.s3.amazonaws.com/click.mp3'
+                    "https://chat-engine-assets.s3.amazonaws.com/click.mp3"
                   ).play()
                 }
               />
